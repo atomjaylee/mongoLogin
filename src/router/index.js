@@ -1,26 +1,64 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import List from '@/components/list'
-import Login from '@/components/login'
+import store from '../store'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   routes: [
     {
-      path: '/',
+      path: '/register',
       name: 'Hello',
-      component: Hello
-    },
-    {
-      path: '/list',
+      component(resolve) {
+        require.ensure(['@/components/Hello.vue'], () => {
+          resolve(require('@/components/Hello.vue'))
+        })
+      }
+    }, {
+      path: '/',
       name: 'List',
-      component: List
-    },{
+      component(resolve) {
+        require.ensure(['@/components/list.vue'], () => {
+          resolve(require('@/components/list.vue'))
+        })
+      },
+
+    }, {
       path: '/login',
       name: 'Login',
-      component: Login
+      component(resolve) {
+        require.ensure(['@/components/login.vue'], () => {
+          resolve(require('@/components/login.vue'))
+        })
+      }
+    }, {
+      path: '*',
+      component(resolve) {
+        require.ensure(['@/components/404.vue'], () => {
+          resolve(require('@/components/404.vue'))
+        })
+      },
+      hidden: true
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  let token = localStorage.getItem('token')
+  if (to.meta.requireAuth) {
+    if (token) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

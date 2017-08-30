@@ -6,20 +6,14 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import router from './router'
 import store from './store'
-import axios from 'axios'
+import axios from './assets/axios'
 
-axios.default.timeout = 5000
-axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.use(ElementUI)
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App }
-})
+new Vue({el: '#app', router, store, template: '<App/>', components: {
+    App
+  }})

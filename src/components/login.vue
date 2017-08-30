@@ -20,7 +20,7 @@
           email: this.email,
           password: this.password
         }).then(req =>{
-          this.$router.push('/list')
+          this.$router.push('/')
         })
       }
     }
