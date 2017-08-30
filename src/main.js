@@ -8,12 +8,17 @@ import router from './router'
 import store from './store'
 import axios from './assets/axios'
 
-
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.use(ElementUI)
 
 /* eslint-disable no-new */
-new Vue({el: '#app', router, store, template: '<App/>', components: {
+new Vue({
+  el: '#app',
+  router,
+  store,
+  template: '<App/>',
+  components: {
     App
-  }})
+  }
+})

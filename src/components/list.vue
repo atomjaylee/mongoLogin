@@ -14,8 +14,13 @@ export default {
     }
   },
   mounted(){
-    this.axios.get('/api/user').then(req =>{
-      this.list = req.data
+    this.axios.get('/api/user').then(({data}) =>{
+      if(data.code == 401){
+        this.$router.push('/login')
+        this.$store.dispatch('UserLogout')
+      }else{
+        this.list = data
+      }
     })
   }
 }

@@ -91,7 +91,7 @@ const User = (req, res) => {
 // 导出接口
 module.exports = (router) => {
   router.post('/register', register),
-  router.get('/user', User),
+  router.get('/user', checkToken, User),
   router.post('/login', Login),
   router.post('/delUser', checkToken, delUser)
 }

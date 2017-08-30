@@ -10,6 +10,6 @@ module.exports = function(name) {
    */
   const token = jwt.sign({
     name: name
-  }, 'secret', {expiresIn: '60s'})
+  }, 'secret', {expiresIn: '5s'})
   return token
 }

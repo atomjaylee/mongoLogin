@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import actions from './actions'
 import mutations from './mutations'
+import actions from './actions'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const state = {
-  token: null,
-  activeName: 'first',
-  username: ''
+	token: null,
+	activeName: 'first',
+	username: ''
 }
 
 export default new Vuex.Store({
-  state,
-  mutations,
-  actions
+	state,
+	mutations,
+	actions
 })

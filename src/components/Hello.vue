@@ -24,17 +24,7 @@
     },
     methods:{
       submit(){
-        this.axios.post('/api/register',{
-          email: this.email,
-          password: this.password
-        }).then(req =>{
-          this.$message({
-            message: '注册成功',
-            type: 'success'
-          })
-        }).catch(err =>{
-          console.log(err)
-        })
+        
       }
     }
   }
